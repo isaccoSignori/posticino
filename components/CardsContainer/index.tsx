@@ -7,7 +7,10 @@ import {
 } from "react-native";
 import { CardsContainerHeader } from "./CardsContainerHeader";
 
-interface CardContainerProps {}
+interface CardContainerProps {
+    sectionTitle: string,
+    onSeeAllClick: () => void,
+}
 
 export const CardContainer = ({
     sectionTitle,
@@ -19,7 +22,7 @@ export const CardContainer = ({
         marginTop: 24,
       }}
     >
-        <CardsContainerHeader title={sectionTitle} />
+        <CardsContainerHeader title={sectionTitle} onPress={onSeeAllClick} />
     </View>
   );
 };

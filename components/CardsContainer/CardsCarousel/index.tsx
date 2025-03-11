@@ -1,6 +1,5 @@
 import { useState, useRef, JSX } from "react";
 import {
-  StyleSheet,
   View,
   FlatList,
   TouchableOpacity,
@@ -9,26 +8,18 @@ import {
   NativeSyntheticEvent,
   Dimensions,
 } from "react-native";
-import { ChevronDown, InfoIcon } from "lucide-react-native";
+import { ChevronDown } from "lucide-react-native";
 import { styles } from "./styles";
 import { COLORS } from "@/constants/Colors";
 import { Card } from "./Card";
 import { useTranslation } from "react-i18next";
-
-type CardType = {
-  id: number;
-  image: string;
-  stars: number;
-  name: string;
-  country: string;
-  description: string;
-};
+import { Restaurant, Location } from "@/types";
 
 interface CardsCarouselProps {
-  cardsData: CardType[];
-  children: JSX.Element[];
+  cardsData: Location[] | Restaurant[];
   onExpand: () => void;
   isExpanded: boolean;
+  cardType: "location" | "restaurant";
 }
 
 const { width } = Dimensions.get("window");
@@ -37,7 +28,7 @@ export const CardsCarousel = ({
   cardsData,
   onExpand,
   isExpanded,
-  children,
+  cardType,
 }: CardsCarouselProps) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const flatListRef = useRef<FlatList>(null);
@@ -48,11 +39,11 @@ export const CardsCarousel = ({
     setActiveIndex(Math.round(scrollPosition / width));
   };
 
-  const renderExpandedItem = ({ item }: { item: CardType }) => {
+  const renderExpandedItem = ({ item }: { item: Location | Restaurant }) => {
     return (
       <View style={styles.expandedItemContainer}>
         <Card
-          key={`card-${item.id}`}
+          key={`cardExpanded-${item.id}-${cardType}`}
           data={item}
           fullWidth
           onPress={() => console.log("Press")}
@@ -61,9 +52,13 @@ export const CardsCarousel = ({
     );
   };
 
-  const renderCollapsedItem = ({ item }: { item: CardType }) => {
+  const renderCollapsedItem = ({ item }: { item: Location | Restaurant }) => {
     return (
-      <Card key={item.id} data={item} onPress={() => console.log("Press")} />
+      <Card
+        key={`cardCollapsed-${item.id}-${cardType}`}
+        data={item}
+        onPress={() => console.log("Press")}
+      />
     );
   };
 
@@ -81,7 +76,9 @@ export const CardsCarousel = ({
           ref={flatListRef}
           data={cardsData}
           renderItem={renderExpandedItem}
-          keyExtractor={(item: CardType) => `flatListKeyForCard${item.id}`}
+          keyExtractor={(item: Location | Restaurant) =>
+            `flatListKeyForCard${item.id}-${cardType}`
+          }
           contentContainerStyle={styles.expandedList}
         />
       </View>
@@ -94,7 +91,9 @@ export const CardsCarousel = ({
         ref={flatListRef}
         data={cardsData}
         renderItem={renderCollapsedItem}
-        keyExtractor={(item: CardType) => `flatListKeyForCard${item.id}`}
+        keyExtractor={(item: Location | Restaurant) =>
+          `flatListKeyForCard${item.id}-${cardType}`
+        }
         contentContainerStyle={styles.list}
         horizontal
         pagingEnabled={false}
@@ -112,7 +111,7 @@ export const CardsCarousel = ({
       <View style={styles.pagination}>
         {cardsData.map(({ id }: { id: number }, index: number) => (
           <View
-            key={`paginationKeyFor-${id}`}
+            key={`paginationKeyFor-${id}-${cardType}`}
             style={[
               styles.paginationDot,
               index === activeIndex && styles.paginationDotActive,

@@ -10,6 +10,7 @@ export const COLORS = Object.freeze({
     border: '#EEEEEE',
     error: '#FF5252',
     success: '#4CAF50',
+    darkerOverlay: 'rgba(0,0,0,0.5)',
     darkOverlay: 'rgba(0,0,0,0.4)',
     lightOverlay: 'rgba(0,0,0,0.2)',
 });
