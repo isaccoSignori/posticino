@@ -17,16 +17,4 @@ i18n
     backend: {
         loadPath: '/assets/locales/{{lng}}/translation.json',
     },
-    resources: {
-        en: {
-            translation: {
-                SEE_ALL: 'See All'
-            }
-        },
-        it: {
-            translation: {
-                SEE_ALL: 'Vedi Tutti'
-            }
-        }
-    }
 })

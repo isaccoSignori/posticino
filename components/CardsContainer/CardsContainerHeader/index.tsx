@@ -1,10 +1,11 @@
 import { COLORS } from "@/constants/Colors";
-import { View, Text, SafeAreaView, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { useTranslation } from "react-i18next";
+import { ChevronRight } from "lucide-react-native";
 
 interface CarsContainerHeaderProps {
   title: string;
-  onClick: () => void;
+  onPress: () => void;
 }
 
 const styles = StyleSheet.create({
@@ -33,13 +34,17 @@ const styles = StyleSheet.create({
 
 export const CardsContainerHeader = ({
   title,
-  onClick,
+  onPress,
 }: CarsContainerHeaderProps) => {
   const { t } = useTranslation();
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{t("SEE_ALL")}</Text>
+      <Text style={styles.title}>{title}</Text>
+      <TouchableOpacity style={styles.seeAllButton} onPress={onPress}>
+        <Text style={styles.seeAllText}>{t("SEE_ALL")}</Text>
+        <ChevronRight size={16} color={COLORS.primary} />
+      </TouchableOpacity>
     </View>
   );
 };

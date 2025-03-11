@@ -5,15 +5,10 @@ import { Image } from "expo-image";
 import { LinearGradient } from "expo-linear-gradient";
 import { Star, Heart } from "lucide-react-native";
 import { styles } from "./styles";
+import { Restaurant, Location } from "@/types";
 
 interface CardProps {
-  data: {
-    image: string;
-    stars: number;
-    name: string;
-    country: string;
-    description: string;
-  };
+  data: Location | Restaurant;
   onPress: () => void;
   fullWidth?: boolean;
 }
@@ -58,7 +53,7 @@ export const Card = ({ data, onPress, fullWidth }: CardProps) => {
         </View>
         <View style={styles.infoContainer}>
           <Text style={styles.name}>{data.name}</Text>
-          <Text style={styles.country}>{data.country}</Text>
+          <Text style={styles.location}>{data.location}</Text>
           <Text style={styles.description} numberOfLines={2}>
             {data.description}
           </Text>
