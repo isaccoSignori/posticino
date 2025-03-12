@@ -6,15 +6,19 @@ import {
   Dimensions,
 } from "react-native";
 import { CardsContainerHeader } from "./CardsContainerHeader";
+import { CardsCarousel } from "./CardsCarousel";
+import { Restaurant, Location, cardType as typeCard } from "@/types";
 
 interface CardContainerProps {
-    sectionTitle: string,
-    onSeeAllClick: () => void,
+  onSeeAllClick: () => void;
+  cardsData: Location[] | Restaurant[];
+  cardType: typeCard;
 }
 
 export const CardContainer = ({
-    sectionTitle,
-    onSeeAllClick,
+  cardType,
+  onSeeAllClick,
+  cardsData,
 }: CardContainerProps) => {
   return (
     <View
@@ -22,7 +26,12 @@ export const CardContainer = ({
         marginTop: 24,
       }}
     >
-        <CardsContainerHeader title={sectionTitle} onPress={onSeeAllClick} />
+      <CardsContainerHeader cardType={cardType} onPress={onSeeAllClick} />
+      <CardsCarousel
+        cardsData={cardsData}
+        cardType={cardType}
+        onExpand={onSeeAllClick}
+      />
     </View>
   );
 };
