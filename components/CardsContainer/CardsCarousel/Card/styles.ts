@@ -2,7 +2,7 @@ import { Dimensions, StyleSheet } from "react-native";
 import { COLORS } from "@/constants/Colors";
 
 const { width } = Dimensions.get("window");
-const CARD_WIDTH = width * 0.75;
+const CARD_WIDTH = Math.min(width * 0.75, 380);
 const CARD_HEIGHT = CARD_WIDTH * 1.2;
 
 export const styles = StyleSheet.create({
@@ -68,6 +68,8 @@ export const styles = StyleSheet.create({
     height: 36,
     borderRadius: 18,
     backgroundColor: COLORS.darkerOverlay,
+    justifyContent: "center",
+    alignItems: "center",
   },
   infoContainer: {
     marginTop: "auto",

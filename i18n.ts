@@ -1,20 +1,27 @@
-import i18n from 'i18next';
-import { initReactI18next } from 'react-i18next';
-import HttpApi from 'i18next-http-backend';
-import LanguageDetector from 'i18next-browser-languagedetector';
+import i18n from "i18next";
+import { initReactI18next } from "react-i18next";
+import LanguageDetector from "i18next-browser-languagedetector";
+import translationEN from "@/assets/locale/en/translation.json";
+import translationIT from "@/assets/locale/it/translation.json";
+
+const resources = {
+  en: {
+    translation: translationEN,
+  },
+  it: {
+    translation: translationIT,
+  },
+};
 
 i18n
-.use(HttpApi)
-.use(LanguageDetector)
-.use(initReactI18next)
-.init({
-    supportedLngs: ['en', 'it'],
-    fallbackLng: 'en',
+  .use(LanguageDetector)
+  .use(initReactI18next)
+  .init({
+    supportedLngs: ["en", "it"],
+    fallbackLng: "en",
+    resources,
     detection: {
-        order: ['cookie', 'htmlTag', 'localStorage', 'path', 'subdomain'],
-        caches: ['cookie'], 
-      },
-    backend: {
-        loadPath: '/assets/locales/{{lng}}/translation.json',
+      order: ["cookie", "htmlTag", "localStorage", "path", "subdomain"],
+      caches: ["cookie"],
     },
-})
+  });

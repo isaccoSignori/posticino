@@ -13,13 +13,13 @@ import { styles } from "./styles";
 import { COLORS } from "@/constants/Colors";
 import { Card } from "./Card";
 import { useTranslation } from "react-i18next";
-import { Restaurant, Location } from "@/types";
+import { Restaurant, Location, cardType as typeCard } from "@/types";
 
 interface CardsCarouselProps {
   cardsData: Location[] | Restaurant[];
   onExpand: () => void;
-  isExpanded: boolean;
-  cardType: "location" | "restaurant";
+  isExpanded?: boolean;
+  cardType: typeCard;
 }
 
 const { width } = Dimensions.get("window");

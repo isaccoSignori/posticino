@@ -19,3 +19,5 @@ export interface Restaurant extends CollapsedCardProps {
     priceRange: string;
     specialties: string[];
 }
+
+export type cardType = "location" | "restaurant";
