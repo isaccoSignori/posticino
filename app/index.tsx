@@ -7,8 +7,10 @@ import { CardContainer } from "@/components/CardsContainer";
 import { CARD_TYPES } from "@/constants/cardTypes";
 import { LOCATIONS } from "@/mocks/locations";
 import { RESTAURANTS } from "@/mocks/restaurants";
+import { SearchBar } from "@/components/SearchBar/index";
 
 export default function Index() {
+  const [searchQuery, setSearchQuery] = useState<string>("");
   return (
     <SafeAreaView
       style={{
@@ -16,7 +18,12 @@ export default function Index() {
         backgroundColor: COLORS.background,
       }}
     >
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <SearchBar
+          value={searchQuery}
+          onChangeText={setSearchQuery}
+          onClear={() => setSearchQuery("")}
+        />
         <CardContainer
           cardType={CARD_TYPES.location}
           onSeeAllClick={() => console.log("onSeeAllClick")}
