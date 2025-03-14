@@ -3,5 +3,10 @@
     "EXPAND": "Espandi",
     "LOCATION_CAROUSEL_TITLE": "Località",
     "RESTAURANT_CAROUSEL_TITLE": "Ristoranti",
-    "SEARCHBAR_PLACEHOLDER": "Cerca Posticini"
+    "SEARCHBAR_PLACEHOLDER": "Cerca Posticini",
+    "TABS": {
+        "HOME": "Scopri",
+        "LOCATIONS": "Località",
+        "RESTAURANTS": "Ristoranti"
+    }
 }
