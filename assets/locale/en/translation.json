@@ -3,5 +3,10 @@
     "EXPAND": "Expand",
     "LOCATION_CAROUSEL_TITLE": "Locations",
     "RESTAURANT_CAROUSEL_TITLE": "Restaurants",
-    "SEARCHBAR_PLACEHOLDER": "Search for Posticini"
+    "SEARCHBAR_PLACEHOLDER": "Search for Posticini",
+    "TABS": {
+        "HOME": "Discover",
+        "LOCATIONS": "Locations",
+        "RESTAURANTS": "Restaurants"
+    }
 }
