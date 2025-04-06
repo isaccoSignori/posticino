@@ -1,10 +1,4 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-  Dimensions,
-} from "react-native";
+import { View } from "react-native";
 import { CardsContainerHeader } from "./CardsContainerHeader";
 import { CardsCarousel } from "./CardsCarousel";
 import { Restaurant, Location, cardType as typeCard } from "@/types";

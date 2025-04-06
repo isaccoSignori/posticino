@@ -1,8 +1,8 @@
+import "../i18n.ts";
 import { useState } from "react";
 import { ScrollView, SafeAreaView } from "react-native";
 import { COLORS } from "@/constants/Colors";
 import { router } from "expo-router";
-import "../i18n.ts";
 import { CardContainer } from "@/components/CardsContainer";
 import { CARD_TYPES } from "@/constants/cardTypes";
 import { LOCATIONS } from "@/mocks/locations";

@@ -1,3 +1,4 @@
+import "../i18n";
 import { Tabs } from "expo-router";
 import { Compass, MapPinPlus, User } from "lucide-react-native";
 import { COLORS } from "@/constants/Colors";
