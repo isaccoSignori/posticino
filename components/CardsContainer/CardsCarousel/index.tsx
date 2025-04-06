@@ -1,4 +1,4 @@
-import { useState, useRef, JSX } from "react";
+import { useState, useRef } from "react";
 import {
   View,
   FlatList,
